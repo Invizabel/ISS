@@ -4,18 +4,26 @@ import time
 import turtle
 
 screen = turtle.Screen()
-screen.setup(1280, 720)
-screen.setworldcoordinates(-180, -90, 180, 90)
+screen.setup(1487, 840)
+screen.setworldcoordinates(-180, -180, 180, 180)
+screen.title("ISS")
 
-screen.bgpic("map.gif")
+screen.bgpic("map.png")
 screen.register_shape("iss.gif")
 iss = turtle.Turtle()
 iss.shape("iss.gif")
 iss.setheading(45)
 iss.penup()
 
+history = turtle.Pen()
+history.pencolor("red")
+history.width(10)
+history.penup()
+
 while True:
     result = requests.get("http://api.open-notify.org/iss-now.json").text
     result = re.findall("\d+\.\d+", result)
     iss.goto(float(result[0]), float(result[1]))
-    time.sleep(15)
+    history.goto(float(result[0]), float(result[1]))
+    history.pendown()
+    time.sleep(15)  
