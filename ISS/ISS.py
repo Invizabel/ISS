@@ -21,9 +21,13 @@ history.width(10)
 history.penup()
 
 while True:
-    result = requests.get("http://api.open-notify.org/iss-now.json").text
-    result = re.findall("\d+\.\d+", result)
-    iss.goto(float(result[0]), float(result[1]))
-    history.goto(float(result[0]), float(result[1]))
-    history.pendown()
-    time.sleep(15)  
+    try:
+        result = requests.get("http://api.open-notify.org/iss-now.json").text
+        result = re.findall("\d+\.\d+", result)
+        iss.goto(float(result[0]), float(result[1]))
+        history.goto(float(result[0]), float(result[1]))
+        history.pendown()
+        time.sleep(15)
+
+    except:
+        pass
