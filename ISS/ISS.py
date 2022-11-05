@@ -23,7 +23,8 @@ history.penup()
 while True:
     try:
         result = requests.get("http://api.open-notify.org/iss-now.json").text
-        result = re.findall("\d+\.\d+", result)
+        result = re.findall("-\d+\.\d+", result)
+        print(result)
         iss.goto(float(result[0]), float(result[1]))
         history.goto(float(result[0]), float(result[1]))
         history.pendown()
