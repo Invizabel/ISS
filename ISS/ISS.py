@@ -5,7 +5,7 @@ import turtle
 
 screen = turtle.Screen()
 screen.setup(1487, 840)
-screen.setworldcoordinates(-180, -90, 180, 90)
+screen.setworldcoordinates(-180, -180, 180, 180)
 screen.title("ISS")
 
 screen.bgpic("map.png")
